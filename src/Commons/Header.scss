@@ -1,0 +1,17 @@
+.header {
+    width: 100%;
+    transition: 200ms;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    .time {
+        letter-spacing: 0.05em;
+        font-size: 1rem;
+    }
+    .date {
+        letter-spacing: 0.1em;
+        font-size: 1rem;
+    }
+}
