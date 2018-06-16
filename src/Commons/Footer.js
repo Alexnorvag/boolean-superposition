@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import logo from '../res/logo/logo.png';
+import logo from '../res/logo/logo.svg';
+// import logo from '../res/logo/logo.png';
 import {BrowserRouter as Router, Route, Link, withRouter} from 'react-router-dom';// eslint-disable-line no-unused-vars
 import './Footer.scss';
 

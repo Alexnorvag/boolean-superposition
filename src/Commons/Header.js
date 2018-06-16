@@ -44,8 +44,8 @@ class Header extends Component {
         const {date, time} = this.state;
 
         return (
-            <div className="header">
-                <nav className="navbar navbar-light bg-light">
+            <div className="header rounded-3">
+                <nav className="navbar navbar-light bg-light rounded">
                     <div className="col-4">
                         <Link to={'/home'}>
                             <p className="navbar-brand text-uppercase">Home</p>
@@ -58,16 +58,40 @@ class Header extends Component {
 
                     <div className="col-4 d-flex justify-content-end">
                         <div className="btn-group">
-                            <button type="button" className="btn btn-primary">Alexandra Ignatenya</button>
                             <button
                                 type="button"
-                                className="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                className="btn btn-info"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">Enter your name</button>
+                            <button
+                                type="button"
+                                className="btn btn-info dropdown-toggle"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false">
                                 <span className="sr-only">Toggle Dropdown</span>
                             </button>
-                            <div className="dropdown-menu">
+                            <div className="dropdown-menu dropdown-menu-right">
+                                <form className="px-1 py-0">
+                                    <div className="form-group">
+                                        <label htmlFor="exampleDropdownFormPassword1">Name</label>
+                                        <input
+                                            type="password"
+                                            className="form-control"
+                                            id="exampleDropdownFormPassword1"
+                                            placeholder="Jhon"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="exampleDropdownFormEmail1">Surname</label>
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            id="exampleDropdownFormEmail1"
+                                            placeholder="Doe"/>
+                                    </div>
+                                    <button type="submit" className="btn btn-primary">Sign in</button>
+                                </form>
                                 <a className="dropdown-item" href="/profile">Profile</a>
                                 <a className="dropdown-item" href="/settings">Settings</a>
                                 <div className="dropdown-divider"></div>
