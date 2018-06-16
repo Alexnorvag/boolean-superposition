@@ -44,14 +44,14 @@ class Header extends Component {
         const {date, time} = this.state;
 
         return (
-            <div className="header rounded-3">
-                <nav className="navbar navbar-light bg-light rounded">
+            <div className="header">
+                <nav className="navbar navbar-dark bg-dark">
                     <div className="col-4">
                         <Link to={'/home'}>
                             <p className="navbar-brand text-uppercase">Home</p>
                         </Link>
                     </div>
-                    <div className="col-4 d-inline text-center">
+                    <div className="col-4 d-inline text-center text-light">
                         <p className="date">{date}</p>
                         <p className="time">{time}</p>
                     </div>
@@ -60,13 +60,13 @@ class Header extends Component {
                         <div className="btn-group">
                             <button
                                 type="button"
-                                className="btn btn-info"
+                                className="btn btn-light"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
-                                aria-expanded="false">Enter your name</button>
+                                aria-expanded="false">What is your name?</button>
                             <button
                                 type="button"
-                                className="btn btn-info dropdown-toggle"
+                                className="btn btn-light dropdown-toggle"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false">
@@ -74,28 +74,35 @@ class Header extends Component {
                             </button>
                             <div className="dropdown-menu dropdown-menu-right">
                                 <form className="px-1 py-0">
-                                    <div className="form-group">
-                                        <label htmlFor="exampleDropdownFormPassword1">Name</label>
+                                    <div className="input-group input-group-sm mb-3">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text" id="groupName">Name</span>
+                                        </div>
                                         <input
-                                            type="password"
+                                            type="text"
                                             className="form-control"
-                                            id="exampleDropdownFormPassword1"
+                                            aria-describedby="groupName"
                                             placeholder="Jhon"/>
                                     </div>
-                                    <div className="form-group">
-                                        <label htmlFor="exampleDropdownFormEmail1">Surname</label>
+                                    <div className="input-group input-group-sm mb-3">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text" id="groupSurname">Surname</span>
+                                        </div>
                                         <input
-                                            type="email"
+                                            type="text"
                                             className="form-control"
-                                            id="exampleDropdownFormEmail1"
+                                            aria-describedby="groupSurname"
                                             placeholder="Doe"/>
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Sign in</button>
+
+                                    <button type="button" className="btn btn-info btn-sm btn-block">Change user</button>
                                 </form>
-                                <a className="dropdown-item" href="/profile">Profile</a>
-                                <a className="dropdown-item" href="/settings">Settings</a>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="/logout">Log out</a>
+                                <div className="px-1">
+                                    <Link to={'/settings'} className="dropdown-item text-center btn-sm btn-outline-info rounded">
+                                        Settings
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

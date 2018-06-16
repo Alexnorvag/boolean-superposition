@@ -20,9 +20,14 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    // background: linear-gradient( rgba(white, 0.8), rgba(white, 0.8)), url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/wov.png);
+    background: #E0EAFC;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #CFDEF3, #E0EAFC);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     ::selection {
-        background: rgba(248, 128, 69, 0.99);
+        background: rgba(23, 184, 126, 0.99);
         color: #fff;
     }
     h2 {
