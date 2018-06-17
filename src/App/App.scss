@@ -20,11 +20,11 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    background: #E0EAFC;
+    background: #ECE9E6;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #CFDEF3, #E0EAFC);
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     ::selection {
         background: rgba(23, 184, 126, 0.99);

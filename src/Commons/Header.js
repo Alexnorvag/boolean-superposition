@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link, withRouter} from 'react-router-dom'; // eslint-disable-line no-unused-vars
+import brandLogo from '../res/logo/brand-logo.svg';
 import './Header.scss';
 
 class Header extends Component {
@@ -8,8 +9,32 @@ class Header extends Component {
 
         this.state = {
             date: '',
-            time: ''
+            time: '',
+            username: '',
+            groupName: '',
+            groupSurname: ''
         };
+
+        this.usernameChange = this
+            .usernameChange
+            .bind(this);
+        this.changeUser = this
+            .changeUser
+            .bind(this);
+    }
+
+    usernameChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    changeUser() {
+            this.setState({
+                username:  (this.state.groupName && this.state.groupSurname) ? this.state.groupName + " " + this.state.groupSurname : '',
+                groupName: '',
+                groupSurname: ''
+            });
     }
 
     componentDidMount() {
@@ -41,14 +66,14 @@ class Header extends Component {
     }
 
     render() {
-        const {date, time} = this.state;
+        const {date, time, username} = this.state;
 
         return (
             <div className="header">
                 <nav className="navbar navbar-dark bg-dark">
                     <div className="col-4">
                         <Link to={'/home'}>
-                            <p className="navbar-brand text-uppercase">Home</p>
+                            <img className="navbar-brand" src={brandLogo} alt="brand-logo"/>
                         </Link>
                     </div>
                     <div className="col-4 d-inline text-center text-light">
@@ -57,13 +82,15 @@ class Header extends Component {
                     </div>
 
                     <div className="col-4 d-flex justify-content-end">
-                        <div className="btn-group">
+                        <div className="btn-group btn-group-sm">
                             <button
                                 type="button"
                                 className="btn btn-light"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
-                                aria-expanded="false">What is your name?</button>
+                                aria-expanded="false">{username
+                                    ? username
+                                    : "What is your name?"}</button>
                             <button
                                 type="button"
                                 className="btn btn-light dropdown-toggle"
@@ -79,27 +106,38 @@ class Header extends Component {
                                             <span className="input-group-text" id="groupName">Name</span>
                                         </div>
                                         <input
+                                            name="groupName"
                                             type="text"
                                             className="form-control"
                                             aria-describedby="groupName"
-                                            placeholder="Jhon"/>
+                                            placeholder="Jhon"
+                                            value={this.state.groupName}
+                                            onChange={this.usernameChange}/>
                                     </div>
                                     <div className="input-group input-group-sm mb-3">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text" id="groupSurname">Surname</span>
                                         </div>
                                         <input
+                                            name="groupSurname"
                                             type="text"
                                             className="form-control"
                                             aria-describedby="groupSurname"
-                                            placeholder="Doe"/>
+                                            placeholder="Doe"
+                                            value={this.state.groupSurname}
+                                            onChange={this.usernameChange}/>
                                     </div>
 
-                                    <button type="button" className="btn btn-info btn-sm btn-block">Change user</button>
+                                    <button
+                                        type="button"
+                                        className="btn btn-info btn-sm btn-block"
+                                        onClick={this.changeUser}>Change user</button>
                                 </form>
                                 <div className="dropdown-divider"></div>
                                 <div className="px-1">
-                                    <Link to={'/settings'} className="dropdown-item text-center btn-sm btn-outline-info rounded">
+                                    <Link
+                                        to={'/settings'}
+                                        className="dropdown-item text-center btn-sm btn-outline-info rounded">
                                         Settings
                                     </Link>
                                 </div>

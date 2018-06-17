@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Homepage from '../Homepage/Homepage';
+import Superposition from '../Superposition/Superposition';
 // import Moore from '../MachinePage/Moore'
 // import Mealy from '../MachinePage/Mealy'
 import './App.scss';
@@ -19,7 +20,7 @@ class App extends Component {
                         <main>
                             <Switch>
                                 <Route path={'/home'} component={Homepage}/>
-                                {/* <Route path={'/moore'} component={Moore}/> */}
+                                <Route path={'/superposition'} component={Superposition}/>
                                 {/* <Route path={'/mealy'} component={Mealy}/> */}
                                 <Route exact path={'/boolean-superposition'} component={() => <Redirect to={'/home'} />} />
                                 <Route exact path={'/'} component={() => <Redirect to={'/home'} />} />

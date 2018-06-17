@@ -13,7 +13,9 @@ class Homepage extends Component {
 
         return (
             <div className="homepage content">
-                HOMEPAGE
+                <Link to={'/superposition'}>
+                    Go to algorithm
+                </Link>
             </div>
         );
     }

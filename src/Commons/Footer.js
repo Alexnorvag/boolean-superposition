@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import logo from '../res/logo/logo.svg';
-// import logo from '../res/logo/logo.png';
 import {BrowserRouter as Router, Route, Link, withRouter} from 'react-router-dom';// eslint-disable-line no-unused-vars
 import './Footer.scss';
 
@@ -17,16 +16,16 @@ class Footer extends Component {
 
         return (
             <footer>
-                <div className="row m-0">
+                <div className="row mx-0 my-1">
                     <div className="logo col-4 my-auto">
-                        <div className="py-2">
+                        <div className="py-0">
                             <Link to={'/home'}>
                                 <img src={logo} alt="logo"/>
                             </Link>
                         </div>
                     </div>
                     <div className="copyright col-4 my-auto">
-                        <p className="text-center">Copyright © NRVG 2018. All rights reserved.</p>
+                        <p className=" text-center">Copyright © NRVG 2018. All rights reserved.</p>
                     </div>
                     <div className="social col-4 my-auto d-flex justify-content-end">
                         <p className="footer-links text-uppercase mr-3 my-auto">Contact Me</p>
