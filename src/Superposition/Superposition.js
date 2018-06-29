@@ -33,6 +33,9 @@ class Superposition extends Component {
         this.renderEditable = this
             .renderEditable
             .bind(this);
+        this.createFunctionsArr = this
+            .createFunctionsArr
+            .bind(this);
     }
 
     tableRangeChange(event) {
@@ -52,7 +55,9 @@ class Superposition extends Component {
 
     renderEditable(cellInfo) {
         return (<div
-            style={{ cursor: "pointer" }}
+            style={{
+            cursor: "pointer"
+        }}
             suppressContentEditableWarning
             onClick={e => {
             const data = [...this.state.data];
@@ -65,8 +70,7 @@ class Superposition extends Component {
         }}
             dangerouslySetInnerHTML={{
             __html: this.state.data[cellInfo.index][cellInfo.column.id]
-        }}
-        />);
+        }}/>);
     }
 
     generateTruthTable() {
@@ -114,8 +118,25 @@ class Superposition extends Component {
             data: update(this.state.data, {$set: testData}),
             columns: update(this.state.columns, {$set: testCol})
         })
+    }
 
-        // console.log("DATA: ", testData);
+    createFunctionsArr() {
+        let functionsArr = [];
+
+        for (let i = 0; i < this.state.functionsValue; i++) {
+            functionsArr[i] = [];
+            for (let j = 0; j < this.state.data.length; j++) {
+                if (this.state.data[j]['f' + i] === '1') {
+                    for (let k = 0; k < this.state.rangeValue; k++) {
+                        functionsArr[i].push(this.state.data[j]['x' + k] === '1'
+                            ? 'x' + (k + 1)
+                            : 'x̅' + (k + 1));
+                    }
+                }
+            }
+        }
+
+        return functionsArr;
     }
 
     render() {
@@ -166,6 +187,32 @@ class Superposition extends Component {
                             columns={columns}
                             showPagination={false}
                             pageSize={Math.pow(2, rangeValue)}/>
+                    </div>
+                    <div className={"col-7"}>
+                        <div className="list-group">
+                            <a
+                                className="list-group-item list-group-item-action list-group-item-primary text-uppercase font-weight-bold text-monospace ">List of all DNF
+                            </a>
+                            {this
+                                .createFunctionsArr()
+                                .map((el, index) => <a
+                                    key={index}
+                                    className="list-group-item list-group-item-action list-group-item-success p-1">
+                                    {"F" + (index + 1) + " = (" + (el.map((xi, index) => (xi === 'x' + this.state.rangeValue || xi === 'x̅' + this.state.rangeValue)
+                                        ? xi + ' v '
+                                        : xi) + ")")
+                                        .replace(/,/g, "")
+                                        .slice(0, -4) + ')'}
+                                </a>)}
+                            <div className="list-group pt-4 text-center">
+                                <a
+                                    className="list-group-item list-group-item-action list-group-item-primary text-uppercase font-weight-bold text-monospace ">
+                                    Superposition after minimization
+                                </a>
+                                <a className="list-group-item list-group-item-action list-group-item-success p-1">x̅1x̅2x3x̅4 v x̅1x2x̅3x4 v x1x̅2x3x̅4 v x̅1x̅2x3x̅4 v x1x̅2x3x4 v x1x2x̅3x̅4 v
+                                    x1x2x̅3x4</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

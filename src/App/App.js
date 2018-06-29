@@ -10,6 +10,7 @@ import './App.scss';
 import { Root } from "./Root";
 
 class App extends Component {
+
     render() {
         // const {footer} = this.props;
 
@@ -21,7 +22,6 @@ class App extends Component {
                             <Switch>
                                 <Route path={'/home'} component={Homepage}/>
                                 <Route path={'/superposition'} component={Superposition}/>
-                                {/* <Route path={'/mealy'} component={Mealy}/> */}
                                 <Route exact path={'/boolean-superposition'} component={() => <Redirect to={'/home'} />} />
                                 <Route exact path={'/'} component={() => <Redirect to={'/home'} />} />
                             </Switch>
